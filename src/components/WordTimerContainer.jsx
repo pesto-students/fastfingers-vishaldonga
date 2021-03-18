@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Timer from "./Timer";
 import WordPlay from "./WordPlay";
 
@@ -9,13 +9,8 @@ export default function WordTimeContainer({ handleGameOver }) {
   const [errorMessage, setErrorMessage] = useState("");
   let [difficultyFactor, setDifficultyFactor] = useState(1.0);
 
-  useEffect(() => {
-    checkWordCorrect();
-  }, [errorMessage]);
-
   const checkWordCorrect = async () => {
     setDifficultyFactor(difficultyFactor + 0.01);
-    console.log(difficultyFactor);
     await fetch("/dictionary.json")
       .then((response) => response.json())
       .then((jsonResponse) => {
@@ -35,6 +30,8 @@ export default function WordTimeContainer({ handleGameOver }) {
       });
   };
 
+  useEffect(checkWordCorrect, [errorMessage]);
+
   if (errorMessage) {
     return <h3>{errorMessage}</h3>;
   }
@@ -47,9 +44,9 @@ export default function WordTimeContainer({ handleGameOver }) {
 }
 
 WordTimeContainer.propTypes = {
-  handleGameOver : PropTypes.func
+  handleGameOver: PropTypes.func,
 };
 
 WordTimeContainer.defaultProps = {
-  handleGameOver : () => {}
-}
+  handleGameOver: () => {},
+};

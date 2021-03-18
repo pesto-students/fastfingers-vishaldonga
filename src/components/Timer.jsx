@@ -19,7 +19,7 @@ export default function Timer({ time, handleGameOver }) {
     }
     const intervalId = setInterval(timer, 6);
     return () => clearInterval(intervalId);
-  }, [currentCount]);
+  });
 
   return (
     <div className="percent">

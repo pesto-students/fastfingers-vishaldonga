@@ -15,7 +15,7 @@ export default function CircularProgressBar({ progress }) {
     const progressOffset = ((100 - progress) / 100) * circumference;
     setOffset(progressOffset);
     circleRef.current.style = "transition: stroke-dashoffset ease-in-out";
-  }, [progress, offset]);
+  }, [progress, offset, circumference]);
 
   return (
     <>
