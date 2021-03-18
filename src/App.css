@@ -1,38 +1,301 @@
+:root {
+  --red: #ff5155;
+  --white: #ffffff;
+  --bodycolor: #032228;
+  --green: #54ba18;
+  --darkviolet: #445298;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .App {
+  height: 100vh;
   text-align: center;
+  background-image: linear-gradient(to bottom, rgb(0, 26, 36), rgba(0,0,0,0.9)) ,url(images/mainbackground.svg);
+  background-size: 100%;
+  padding: 3vh;
+  color: var(--red);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* for MainPage.jsx */
+.MainPage {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form {  
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 2rem;
+}
+.keyboard {
+  height: 6rem;
+  margin: 4rem 0 0.3rem 0;
+}
+h1 {
+  font-size: 43px;
+  font-weight: normal;
+  line-height: 1.2;
+}
+input, select {
+  width: 33%;
+  padding: 0.7rem 1rem;
+  font-size: 24px;
+  border-radius: 15px;
+  margin: 0.5rem;
+}
+input:focus, select:focus {
+  outline: none
+}
+input {
+  opacity: 0.59;
+}
+input::placeholder {
+  color: var(--bodycolor);
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: var(--bodycolor);
+}
+select {
+  color: #97a5a7;
+  background: transparent;
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, grey 50%, transparent 50%),
+    radial-gradient(transparent 70%, transparent 72%);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    0.50em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1.5em 1.5em;
+  background-repeat: no-repeat;
+}
+select {
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  appearance:none;
+}
+select option {
+  margin: 5px;
+  font-size: 0.8em;
+}
+/* .select {
+  display:flex;
+  flex-direction: column;
+  position:relative;
+  width:250px;
+  height:40px;
+}
+.option {
+  padding:0 30px 0 10px;
+  min-height:40px;
+  display:flex;
+  align-items:center;
+  background:#333;
+  border-top:#222 solid 1px;
+  position:absolute;
+  top:0;
+  width: 100%;
+  pointer-events:none;
+  order:2;
+  z-index:1;
+  transition:background .4s ease-in-out;
+  box-sizing:border-box;
+  overflow:hidden;
+  white-space:nowrap;  
+}
+.option:hover {
+  background:#666;
+}
+
+.select:focus .option {
+  position:relative;
+  pointer-events:all;
+}
+input[type="radio"] {
+  opacity:0;
+  position:absolute;
+  left:-99999px;
+}
+
+input[type="radio"]:checked + label {
+  order: 1;
+  z-index:2;
+  background:#666;
+  border-top:none;
+  position:relative;
+}
+
+input[type="radio"]:checked + label:after {
+  content:'';
+  width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid white;
+  position:absolute;
+  right:10px;
+  top:calc(50% - 2.5px);
+  pointer-events:none;
+  z-index:3;
+}
+
+input[type="radio"]:checked + label:before {
+  position:absolute;
+  right:0;
+  height: 40px;
+  width: 40px;
+  content: '';
+  background:#666;
+} */
+
+p {
+  display: flex;
+  line-height: 1.2;
+  margin: 5px;
+}
+p:before, p:after{
+  content: "";
+  border-bottom: 1px solid;
+  margin: 6px auto;
+  flex: 0.1;
+}
+p:before {
+  margin-right: 10px
+}
+p:after {
+  margin-left: 10px
+}
+.startgame {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 4rem;
+}
+.play {
+  content: url(./images/icon-play.svg);
+}
+.playbutton {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 29px;
+  color: var(--red);
+}
+/******/
+
+/**GamePageContainer component */
+.alignleft {
+  text-align: left;
+}
+.aligncenter {
+  text-align: center;
+}
+.crossicon {
+  content: url(./images/icon-cross.svg);
+}
+.crossdiv {
+  padding: 1.5rem 0;
+}
+.percent {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 50px #000;
 }
 
-.App-link {
-  color: #61dafb;
+.percent .number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.percent .number h2 {
+  color: var(--white);
+  font-weight: normal;
+  font-size: 40px;
+  transition: 0.5s;
+}
+.white {
+  color: var(--white);
+}
+
+/**UserInfo and Score component*/
+.userinfo {
+  margin: 1rem;
+}
+
+.usericon {
+  content: url(./images/icon-user.svg);
+}
+.flex {
+  display: flex;
+}
+.flexcol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flexone {
+  flex: 1;
+}
+.gamepad {
+  content: url(./images/icon-gamepad.svg);
+}
+.info {
+  font-size: 29px;
+  color: var(--red);
+  margin: 0.4rem;
+}
+/*****/
+
+/***ScoreBoard component**/
+.scoreboard {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid var(--red);
+  border-radius: 15px;
+  text-align: center;
+  width: 18%;
+  height: 60vh;
+  padding: 0 1rem;
+  margin-left: 1rem;
+}
+.scoreboard h2 {
+  color: var(--red);
+  font-weight: normal;
+  padding: 0.7rem 0 1.5rem;
+}
+.scoreboard div {
+  color: var(--white);
+  text-align: left;
+  padding: 0.3rem 0.5rem;
+}
+
+
+/**WordPlay Container**/
+.word-play input {
+  width: auto;
+  text-transform: uppercase;
+}
+.green {
+  color: var(--green);
+}
+.darkviolet {
+  color: var(--darkviolet);
 }
