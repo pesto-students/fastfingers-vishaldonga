@@ -17,7 +17,7 @@ export default function Score({ isGameOver }) {
     }
     const intervalId = setInterval(timer, 1000);
     return () => clearInterval(intervalId);
-  }, [currentCount, isGameOver]);
+  });
 
   return (
     <div className="userinfo">
