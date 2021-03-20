@@ -12,7 +12,7 @@ export default function CircularProgressBar({ progress }) {
   const circumference = 140 * Math.PI;
 
   useEffect(() => {
-    const progressOffset = ((100 - progress) / 100) * circumference;
+    const progressOffset = (progress / 100) * circumference;
     setOffset(progressOffset);
     circleRef.current.style = "transition: stroke-dashoffset ease-in-out";
   }, [progress, offset, circumference]);

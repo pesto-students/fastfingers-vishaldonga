@@ -7,14 +7,20 @@ export default function Timer({ time, handleGameOver }) {
   const convertedTime = time * 100;
   let [currentCount, setCount] = useState(convertedTime);
   let timer = () => setCount(currentCount - 1);
+  const [initialStateChanged, setInitialStateChanged] = useState(false);
 
   useEffect(() => {
+    if (convertedTime > 0) {
+      setInitialStateChanged(true);
+    }
     setCount(convertedTime);
   }, [convertedTime]);
 
   useEffect(() => {
     if (currentCount <= 0) {
-      handleGameOver();
+      if (initialStateChanged) {
+        handleGameOver();
+      }
       return;
     }
     const intervalId = setInterval(timer, 6);
