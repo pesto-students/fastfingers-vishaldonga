@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { convertTimeToMMSS }from "../util";
+import { convertTimeToMMSS } from "../util";
 
 export default function Score({ isGameOver }) {
   const [currentCount, setCount] = useState(0);
@@ -8,11 +8,15 @@ export default function Score({ isGameOver }) {
 
   useEffect(() => {
     if (isGameOver) {
-      const previousGameResults = sessionStorage.getItem("gameResults")
+      let previousGameResults = sessionStorage.getItem("gameResults")
         ? sessionStorage.getItem("gameResults")
-        : [];
+        : "[]";
+      previousGameResults = JSON.parse(previousGameResults);
       previousGameResults.push(currentCount);
-      sessionStorage.setItem("gameResults", previousGameResults);
+      sessionStorage.setItem(
+        "gameResults",
+        JSON.stringify(previousGameResults)
+      );
       return;
     }
     const intervalId = setInterval(timer, 1000);
@@ -26,7 +30,9 @@ export default function Score({ isGameOver }) {
       </div>
       <div className="flex">
         <div className="info">
-          <span>SCORE : {convertTimeToMMSS(currentCount)}</span>
+          <span id="spnTotalScore" count={currentCount}>
+            SCORE : {convertTimeToMMSS(currentCount)}
+          </span>
         </div>
       </div>
     </div>
