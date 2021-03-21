@@ -1,0 +1,6 @@
+.crossicon {
+  content: url(./../../images/icon-cross.svg);
+}
+.crossdiv {
+  padding: 1.5rem 0;
+}

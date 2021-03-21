@@ -1,5 +1,6 @@
 import React from "react";
-import { convertTimeToMMSS } from "../util.js";
+import { convertTimeToMMSS } from "../../util";
+import "./ScoreBoard.css";
 
 export default function ScoreBoard() {
   let allGameResults = sessionStorage.getItem("gameResults")
