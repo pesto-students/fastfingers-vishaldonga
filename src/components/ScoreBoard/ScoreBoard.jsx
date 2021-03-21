@@ -10,11 +10,11 @@ export default function ScoreBoard() {
   const bestScore = Math.max(...allGameResults);
   const content = allGameResults.map((time, i) => (
     <div key={i}>
-      <span className={bestScore === time ? "visible" : "hidden"}>
+      <span className={bestScore === time ? "show" : "hide"}>
         Personal Best
       </span>
       <div>
-        Game {i}: {convertTimeToMMSS(time)}
+        <h4 className="game-score">Game {i}: {convertTimeToMMSS(time)}</h4>
       </div>
     </div>
   ));

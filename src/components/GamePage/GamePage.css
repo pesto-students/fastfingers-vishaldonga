@@ -4,3 +4,11 @@
 .crossdiv {
   padding: 1.5rem 0;
 }
+.quit-game {
+  position: absolute;
+  bottom: 5px;
+}
+.word-timer-container {
+  flex: none;
+  width:65%;
+}

@@ -31,11 +31,11 @@ export default function WordPlay({ word, checkWordCorrect }) {
   };
 
   return (
-    <div className="word-play flexcol">
-      <h1 id="wordText" className="white">
+    <div className="word-play flex-col">
+      <h1 id="wordText" className="white-color m-1">
         {word}
       </h1>
-      <input type="text" className="aligncenter" onChange={handleWordInput} />
+      <input type="text" className="align-center" onChange={handleWordInput} />
     </div>
   );
 }

@@ -53,7 +53,7 @@ export default class MainPage extends Component {
             placeholder="TYPE YOUR NAME"
             onChange={this.handleNameChange}
           />
-          <label id="validName" className="alignleft w-33 hidden">
+          <label id="validName" className="align-left w-33 hidden">
             *Please enter your name to start game.
           </label>
           <select
