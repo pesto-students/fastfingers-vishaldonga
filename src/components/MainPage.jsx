@@ -18,7 +18,15 @@ export default class MainPage extends Component {
     this.setState({ difficultyLevel: value });
   };
   handleSubmit = (handleLogIn) => {
+    const username = document.getElementById("username");
+    if (username.value === "") {
+      username.focus();
+      document.getElementById("validName").classList.remove("hidden");
+      document.getElementById("validName").classList.add("visible");
+      return;
+    }
     const { name, difficultyLevel } = this.state;
+    sessionStorage.clear();
     sessionStorage.setItem("name", name);
     sessionStorage.setItem("difficultyLevel", difficultyLevel);
     handleLogIn();
@@ -36,14 +44,17 @@ export default class MainPage extends Component {
         <div>
           <p>the ultimate typing game</p>
         </div>
-        <form method="POST" onSubmit={() => this.handleSubmit(handleLogIn)}>
+        <div className="form-div">
           <input
             type="text"
             name="name"
+            id="username"
             placeholder="TYPE YOUR NAME"
             onChange={this.handleNameChange}
-            required
           />
+          <label id="validName" className="alignleft w-33 hidden">
+            *Please enter your name to start game.
+          </label>
           <select
             name="difficulty"
             id="difficulty"
@@ -55,11 +66,14 @@ export default class MainPage extends Component {
             <option value="medium">MEDIUM</option>
             <option value="hard">HARD</option>
           </select>
-          <div className="startgame">
+          <div
+            className="startgame pointer"
+            onClick={() => this.handleSubmit(handleLogIn)}
+          >
             <div className="play"></div>
             <button className="playbutton">START GAME</button>
           </div>
-        </form>
+        </div>
       </div>
     );
   }

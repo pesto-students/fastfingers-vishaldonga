@@ -44,7 +44,7 @@ export default function GamePageContainer() {
           <WordTimerContainer handleGameOver={handleGameOver} />
         </div>
       </div>
-      <div className="flex">
+      <div className="flex pointer" onClick={handleGameOver}>
         <div className="crossicon"></div>
         <div className="info crossdiv">STOP GAME</div>
       </div>

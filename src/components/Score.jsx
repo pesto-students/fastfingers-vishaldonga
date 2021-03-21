@@ -6,22 +6,27 @@ export default function Score({ isGameOver }) {
   const [currentCount, setCount] = useState(0);
   let timer = () => setCount(currentCount + 1);
 
-  useEffect(() => {
+  const setTimer = () => {
     if (isGameOver) {
-      let previousGameResults = sessionStorage.getItem("gameResults")
-        ? sessionStorage.getItem("gameResults")
-        : "[]";
-      previousGameResults = JSON.parse(previousGameResults);
-      previousGameResults.push(currentCount);
-      sessionStorage.setItem(
-        "gameResults",
-        JSON.stringify(previousGameResults)
-      );
+      if (currentCount > 0) {
+        let previousGameResults = sessionStorage.getItem("gameResults")
+          ? sessionStorage.getItem("gameResults")
+          : "[]";
+        previousGameResults = JSON.parse(previousGameResults);
+        previousGameResults.push(currentCount);
+        sessionStorage.setItem(
+          "gameResults",
+          JSON.stringify(previousGameResults)
+        );
+      }
+      setCount(0);
       return;
-    }
+    }  
     const intervalId = setInterval(timer, 1000);
     return () => clearInterval(intervalId);
-  });
+  }
+
+  useEffect(setTimer);
 
   return (
     <div className="userinfo">
