@@ -4,3 +4,10 @@
 .final-score-info {
   color: var(--white);
 }
+.score-game-font {
+  font-size: 2.7rem;
+    font-weight: normal;
+}
+.score-time-font {
+  font-size: 4.5rem;
+}

@@ -20,13 +20,13 @@ export default function GamePageContainer() {
   };
   if (isGameOver) {
     return (
-      <div className="alignleft">
+      <div className="align-left">
         <div className="flex">
           <UserInfo />
           <Score isGameOver={isGameOver} />
         </div>
         <DisplayCurrentScore handlePlayAgainClick={handlePlayAgainClick} />
-        <div className="flex pointer" onClick={handleQuitGame}>
+        <div className="inline-flex pointer quit-game" onClick={handleQuitGame}>
           <div className="crossicon"></div>
           <div className="info crossdiv">QUIT</div>
         </div>
@@ -34,18 +34,18 @@ export default function GamePageContainer() {
     );
   }
   return (
-    <div className="alignleft">
+    <div className="align-left">
       <div className="flex">
         <UserInfo />
         <Score isGameOver={isGameOver} />
       </div>
       <div className="flex">
         <ScoreBoard />
-        <div className="flexcol flexone">
+        <div className="flex-col word-timer-container">
           <WordTimerContainer handleGameOver={handleGameOver} />
         </div>
       </div>
-      <div className="flex pointer" onClick={handleGameOver}>
+      <div className="flex pointer quit-game" onClick={handleGameOver}>
         <div className="crossicon"></div>
         <div className="info crossdiv">STOP GAME</div>
       </div>

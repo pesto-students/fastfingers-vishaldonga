@@ -5,7 +5,7 @@ export default function UserInfo() {
   const name = sessionStorage.getItem("name");
   const initialLevel = sessionStorage.getItem("difficultyLevel");
   return (
-    <div className="m-1 flexone">
+    <div className="m-1 flex-one">
       <div className="flex">
         <div className="usericon"></div>
         <div className="info">{name.toUpperCase()}</div>

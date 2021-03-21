@@ -23,10 +23,10 @@
   padding: 3vh;
   color: var(--red);
 }
-.alignleft {
+.align-left {
   text-align: left;
 }
-.aligncenter {
+.align-center {
   text-align: center;
 }
 .m-1 {
@@ -35,12 +35,12 @@
 .flex {
   display: flex;
 }
-.flexcol {
+.flex-col {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.flexone {
+.flex-one {
   flex: 1;
 }
 .info {

@@ -9,6 +9,7 @@
   padding: 0 1rem;
   margin-left: 1rem;
   overflow-y: scroll;
+  scrollbar-width: 0px;
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -22,4 +23,15 @@
   color: var(--white);
   text-align: left;
   padding: 0.3rem 0.5rem;
+}
+.show {
+  margin-left: 0.5rem;
+  color: var(--red);
+  display: block;
+}
+.hide {
+  display: none;
+}
+.game-score {
+  font-size: 1.5rem;
 }

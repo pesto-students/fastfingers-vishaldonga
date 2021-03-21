@@ -47,8 +47,8 @@ export default function WordTimeContainer({ handleGameOver }) {
     return <h3>{errorMessage}</h3>;
   }
   return (
-    <div className="flexcol flexone">
-      <Timer time={time} handleGameOver={handleGameOver} />
+    <div className="flex-col flex-one">
+      <Timer time={time} handleGameOver={handleGameOver} /> 
       <WordPlay word={word} checkWordCorrect={checkWordCorrect} />
     </div>
   );
