@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import UserInfo from "./UserInfo";
-import Score from "./Score";
-import ScoreBoard from "./ScoreBoard";
-import WordTimerContainer from "./WordTimerContainer";
-import DisplayCurrentScore from "./DisplayCurrentScore";
+import UserInfo from "./../UserInfo/UserInfo";
+import Score from "./../CurrentScore/Score";
+import ScoreBoard from "./../ScoreBoard/ScoreBoard";
+import WordTimerContainer from "./../Word/WordTimerContainer";
+import DisplayCurrentScore from "./../CurrentScore/DisplayCurrentScore";
+import "./GamePage.css";
 
 export default function GamePageContainer() {
   const [isGameOver, setGameOver] = useState(false);

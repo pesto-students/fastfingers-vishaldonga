@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./DisplayCurrentScore.css";
 
 export default function DisplayCurrentScore({ handlePlayAgainClick }) {
   let allGameResults = sessionStorage.getItem("gameResults")

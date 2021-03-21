@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { convertTimeToMilli, convertTimeToProgress } from "../util";
-import CircularProgressBar from "../components/CircularProgressBar/CircularProgressBar";
+import { convertTimeToMilli, convertTimeToProgress } from "../../util";
+import CircularProgressBar from "./../CircularProgressBar/CircularProgressBar";
+import "./Timer.css";
 
 export default function Timer({ time, handleGameOver }) {
   const convertedTime = time * 100;
@@ -28,7 +29,7 @@ export default function Timer({ time, handleGameOver }) {
   });
 
   return (
-    <div className="percent">
+    <div className="timer-container">
       <CircularProgressBar
         progress={convertTimeToProgress(currentCount, time)}
       />

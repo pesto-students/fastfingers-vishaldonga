@@ -1,0 +1,100 @@
+.MainPage {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.form-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+}
+.keyboard {
+  height: 6rem;
+  margin: 4rem 0 0.3rem 0;
+}
+h1 {
+  font-size: 43px;
+  font-weight: normal;
+  line-height: 1.2;
+}
+input,
+select {
+  width: 33%;
+  padding: 0.7rem 1rem;
+  font-size: 24px;
+  border-radius: 15px;
+  margin: 0.5rem;
+}
+input:focus,
+select:focus {
+  outline: none;
+}
+input {
+  opacity: 0.59;
+}
+input::placeholder {
+  color: var(--bodycolor);
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: var(--bodycolor);
+}
+select {
+  color: #97a5a7;
+  background: transparent;
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, grey 50%, transparent 50%),
+    radial-gradient(transparent 70%, transparent 72%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), 0.5em;
+  background-size: 5px 5px, 5px 5px, 1.5em 1.5em;
+  background-repeat: no-repeat;
+}
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+select option {
+  margin: 5px;
+  font-size: 0.8em;
+}
+.w-33 {
+  width: 33%;
+}
+p {
+  display: flex;
+  line-height: 1.2;
+  margin: 5px;
+}
+p:before,
+p:after {
+  content: "";
+  border-bottom: 1px solid;
+  margin: 6px auto;
+  flex: 0.1;
+}
+p:before {
+  margin-right: 10px;
+}
+p:after {
+  margin-left: 10px;
+}
+.startgame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+}
+.play {
+  content: url(./../../images/icon-play.svg);
+}
+.playbutton {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 29px;
+  color: var(--red);
+}

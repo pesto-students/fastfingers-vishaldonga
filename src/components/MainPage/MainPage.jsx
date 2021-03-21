@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { ReactComponent as Keyboard } from "./../images/icon-keyboard.svg";
+import { ReactComponent as Keyboard } from "./../../images/icon-keyboard.svg";
+import "./MainPage.css";
 
 export default class MainPage extends Component {
   constructor(props) {

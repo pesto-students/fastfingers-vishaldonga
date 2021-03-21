@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Timer from "./Timer";
+import Timer from "./../Timer/Timer";
 import WordPlay from "./WordPlay";
-import { dictionary } from "../dictionary.js";
+import { dictionary } from "../../dictionary";
+import "./WordTimeContainer.css";
 
 const difficultyLevelMap = new Map([
   ["easy", 1],
@@ -15,19 +16,23 @@ export default function WordTimeContainer({ handleGameOver }) {
   const [time, setTime] = useState(0);
   const [errorMessage] = useState("");
 
-  const initialDifficultyFactor = difficultyLevelMap.get(sessionStorage.getItem("difficultyLevel"));
-  const [difficultyFactor, setDifficultyFactor] = useState(initialDifficultyFactor);
+  const initialDifficultyFactor = difficultyLevelMap.get(
+    sessionStorage.getItem("difficultyLevel")
+  );
+  const [difficultyFactor, setDifficultyFactor] = useState(
+    initialDifficultyFactor
+  );
 
   const wordLength = (word) => {
     if (difficultyFactor < 1.5) {
       return word.length <= 4;
-    } else if(difficultyFactor >= 1.5 && difficultyFactor < 2) {
+    } else if (difficultyFactor >= 1.5 && difficultyFactor < 2) {
       return word.length > 4 && word.length <= 8;
     }
     return word.length > 8;
-  }
+  };
 
-  const checkWordCorrect = () => {    
+  const checkWordCorrect = () => {
     const filteredResponse = dictionary.filter(wordLength);
     const randomNumber = Math.floor(Math.random() * filteredResponse.length);
     setWord(filteredResponse[randomNumber].toUpperCase());
