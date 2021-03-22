@@ -6,10 +6,13 @@ export default function CircularProgressBar({ progress }) {
   const [offset, setOffset] = useState(0);
   const circleRef = useRef(null);
 
-  const center = 75;
-  const radius = 70;
-  const circumference = 140 * Math.PI;
-
+  let center = 75;
+  let radius = 70;
+  if (window.screen.width >= 1500) {
+    center = 125;
+    radius = 115;
+  }
+  const circumference = 2 * radius * Math.PI;
   useEffect(() => {
     const progressOffset = (progress / 100) * circumference;
     setOffset(progressOffset);

@@ -5,7 +5,7 @@
   border-radius: 15px;
   text-align: center;
   width: 18%;
-  height: 60vh;
+  height: 65vh;
   padding: 0 1rem;
   margin-left: 1rem;
   overflow-y: scroll;
@@ -34,4 +34,16 @@
 }
 .game-score {
   font-size: 1.5rem;
+}
+
+@media all and (min-width: 1500px) and (min-height: 800px) {
+  .scoreboard {
+    width: 20%;
+  }
+  .scoreboard h2 {
+    font-size: 40px;
+  }
+  .game-score {
+    font-size: 2.5rem;
+  }
 }

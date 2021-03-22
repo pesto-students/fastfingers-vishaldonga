@@ -98,3 +98,23 @@ p:after {
   font-size: 29px;
   color: var(--red);
 }
+
+@media all and (min-width: 1500px) and (min-height: 800px) {
+  .keyboard {
+    height: 12rem;
+  }
+  h1 {
+    font-size: 63px;
+  }
+  p {
+    font-size: 22px;
+  }
+  input,
+  select {
+    padding: 1rem 1rem;
+    font-size: 31px;
+  }
+  .playbutton {
+    font-size: 49px;
+  }
+}

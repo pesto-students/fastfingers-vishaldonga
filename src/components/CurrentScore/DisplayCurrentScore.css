@@ -11,3 +11,13 @@
 .score-time-font {
   font-size: 4.5rem;
 }
+
+
+@media all and (min-width : 1500px) and (min-height: 800px) {
+  .score-game-font {
+    font-size: 4.7rem;
+  }
+  .score-time-font {
+    font-size: 7rem;
+  }
+}
