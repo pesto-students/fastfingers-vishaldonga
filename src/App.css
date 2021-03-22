@@ -10,6 +10,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  font-family: 'Black Ops One', cursive;
+}
 .App {
   height: 100vh;
   text-align: center;
