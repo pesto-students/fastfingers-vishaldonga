@@ -2,7 +2,7 @@
   content: url(./../../images/icon-cross.svg);
 }
 .crossdiv {
-  padding: 1.5rem 0;
+  padding: 1.5rem 8px;
 }
 .quit-game {
   position: absolute;
@@ -11,4 +11,10 @@
 .word-timer-container {
   flex: none;
   width:65%;
+}
+
+@media all and (min-width: 1500px) and (min-height: 800px) {
+  .crossdiv {
+    padding: 1.5rem 16px;
+  }
 }

@@ -63,3 +63,9 @@
 .pointer {
   cursor: pointer;
 }
+
+@media all and (min-width: 1500px) and (min-height: 800px) {
+  .info {
+    font-size: 49px;
+  }
+}
