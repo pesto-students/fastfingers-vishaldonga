@@ -11,7 +11,10 @@ const difficultyLevelMap = new Map([
   ["hard", 2],
 ]);
 
-export default function WordTimerContainer({ handleGameOver, changeGameLevel }) {
+export default function WordTimerContainer({
+  handleGameOver,
+  changeGameLevel,
+}) {
   const [word, setWord] = useState("");
   const [time, setTime] = useState(0);
   const [errorMessage] = useState("");
@@ -38,12 +41,12 @@ export default function WordTimerContainer({ handleGameOver, changeGameLevel }) 
     setWord(filteredResponse[randomNumber].toUpperCase());
     const wordTime = filteredResponse[randomNumber].length / difficultyFactor;
     setTime(wordTime > 2 ? wordTime : 2);
-    setDifficultyFactor(difficultyFactor + 0.1);
-    if (difficultyFactor > 1.5 && difficultyFactor < 1.51) {
-      sessionStorage.setItem("difficultyLevel","medium");
+    setDifficultyFactor(difficultyFactor + 0.01);
+    if (difficultyFactor >= 1.5 && difficultyFactor < 1.51) {
+      sessionStorage.setItem("difficultyLevel", "medium");
       changeGameLevel();
-    } else if (difficultyFactor > 2 && difficultyFactor < 2.01) {
-      sessionStorage.setItem("difficultyLevel","hard");
+    } else if (difficultyFactor >= 2 && difficultyFactor < 2.01) {
+      sessionStorage.setItem("difficultyLevel", "hard");
       changeGameLevel();
     }
   };
@@ -55,7 +58,7 @@ export default function WordTimerContainer({ handleGameOver, changeGameLevel }) 
   }
   return (
     <div className="flex-col flex-one">
-      <Timer time={time} handleGameOver={handleGameOver} /> 
+      <Timer time={time} handleGameOver={handleGameOver} />
       <WordPlay word={word} checkWordCorrect={checkWordCorrect} />
     </div>
   );
@@ -63,10 +66,10 @@ export default function WordTimerContainer({ handleGameOver, changeGameLevel }) 
 
 WordTimerContainer.propTypes = {
   handleGameOver: PropTypes.func,
-  changeGameLevel: PropTypes.func
+  changeGameLevel: PropTypes.func,
 };
 
 WordTimerContainer.defaultProps = {
   handleGameOver: () => {},
-  changeGameLevel: () => {}
+  changeGameLevel: () => {},
 };
