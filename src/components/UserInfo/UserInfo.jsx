@@ -6,9 +6,9 @@ let initialLevel;
 
 export default function UserInfo({ isGameLevelChanged }) {
   const name = sessionStorage.getItem("name");
-  initialLevel = sessionStorage.getItem("difficultyLevel");
+  initialLevel = sessionStorage.getItem("level");
   useEffect(() => {
-    initialLevel = sessionStorage.getItem("difficultyLevel");
+    initialLevel = sessionStorage.getItem("level");
   }, [isGameLevelChanged]);
   return (
     <div className="m-1 flex-one">

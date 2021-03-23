@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import "./DisplayCurrentScore.css";
 
 export default function DisplayCurrentScore({ handlePlayAgainClick }) {
-  let allGameResults = sessionStorage.getItem("gameResults")
-    ? sessionStorage.getItem("gameResults")
+  let allGameResults = sessionStorage.getItem("scores")
+    ? sessionStorage.getItem("scores")
     : "[]";
   allGameResults = JSON.parse(allGameResults);
   const count = document.getElementById("spnTotalScore").getAttribute("count");

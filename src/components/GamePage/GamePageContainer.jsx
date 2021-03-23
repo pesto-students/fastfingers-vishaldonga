@@ -44,7 +44,7 @@ export default function GamePageContainer() {
         <UserInfo isGameLevelChanged={isGameLevelChanged}/>
         <Score isGameOver={isGameOver} />
       </div>
-      <div className="flex">
+      <div className="flex column-reverse">
         <ScoreBoard />
         <div className="flex-col word-timer-container">
           <WordTimerContainer handleGameOver={handleGameOver} changeGameLevel={changeGameLevel}/>

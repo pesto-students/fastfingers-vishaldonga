@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./WordTimeContainer.css";
 
-export default function WordPlay({ word, checkWordCorrect }) {
+export default function WordPlay({ word, getWord }) {
   const [matchedWordIndex, setMatchedWordIndex] = useState(-1);
 
   const handleWordInput = (e) => {
@@ -25,7 +25,7 @@ export default function WordPlay({ word, checkWordCorrect }) {
       )}</span>${word.substring(value.length)}`;
     }
     if (word === value.toUpperCase()) {
-      checkWordCorrect();
+      getWord();
       e.target.value = "";
     }
   };
@@ -48,9 +48,9 @@ export default function WordPlay({ word, checkWordCorrect }) {
 
 WordPlay.propTypes = {
   word: PropTypes.string.isRequired,
-  checkWordCorrect: PropTypes.func,
+  getWord: PropTypes.func,
 };
 
 WordPlay.defaultProps = {
-  checkWordCorrect: () => {},
+  getWord: () => {},
 };

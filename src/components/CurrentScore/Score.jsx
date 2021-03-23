@@ -10,13 +10,13 @@ export default function Score({ isGameOver }) {
   const setTimer = () => {
     if (isGameOver) {
       if (currentCount > 0) {
-        let previousGameResults = sessionStorage.getItem("gameResults")
-          ? sessionStorage.getItem("gameResults")
+        let previousGameResults = sessionStorage.getItem("scores")
+          ? sessionStorage.getItem("scores")
           : "[]";
         previousGameResults = JSON.parse(previousGameResults);
         previousGameResults.push(currentCount);
         sessionStorage.setItem(
-          "gameResults",
+          "scores",
           JSON.stringify(previousGameResults)
         );
       }
