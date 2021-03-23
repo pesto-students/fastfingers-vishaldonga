@@ -35,7 +35,13 @@ export default function WordPlay({ word, checkWordCorrect }) {
       <h1 id="wordText" className="white-color m-1">
         {word}
       </h1>
-      <input type="text" className="align-center" onChange={handleWordInput} />
+      <input
+        type="text"
+        id="wordInput"
+        className="align-center"
+        onChange={handleWordInput}
+        autoComplete="off"
+      />
     </div>
   );
 }
@@ -43,4 +49,8 @@ export default function WordPlay({ word, checkWordCorrect }) {
 WordPlay.propTypes = {
   word: PropTypes.string.isRequired,
   checkWordCorrect: PropTypes.func,
+};
+
+WordPlay.defaultProps = {
+  checkWordCorrect: () => {},
 };

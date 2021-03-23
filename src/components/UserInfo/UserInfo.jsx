@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./UserInfo.css";
+import PropTypes from "prop-types";
 
-export default function UserInfo() {
+let initialLevel;
+
+export default function UserInfo({ isGameLevelChanged }) {
   const name = sessionStorage.getItem("name");
-  const initialLevel = sessionStorage.getItem("difficultyLevel");
+  initialLevel = sessionStorage.getItem("difficultyLevel");
+  useEffect(() => {
+    initialLevel = sessionStorage.getItem("difficultyLevel");
+  }, [isGameLevelChanged]);
   return (
     <div className="m-1 flex-one">
       <div className="flex">
@@ -17,3 +23,11 @@ export default function UserInfo() {
     </div>
   );
 }
+
+UserInfo.propTypes = {
+  isGameLevelChanged: PropTypes.bool.isRequired,
+};
+
+UserInfo.defaultProps = {
+  isGameLevelChanged: false,
+};
