@@ -1,31 +1,25 @@
-import React, { Component } from 'react';
-import MainPage from './components/MainPage/MainPage';
-import './App.css';
-import GamePageContainer from './components/GamePage/GamePageContainer';
+import React, { useState } from "react";
+import MainPage from "./components/MainPage/MainPage";
+import "./App.css";
+import GamePageContainer from "./components/GamePage/GamePageContainer";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn : false,
-    }
+function App() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const handleLogIn = () => {
+    setLoggedIn(true);
+  };
+  if (!isLoggedIn) {
+    return (
+      <div className="App">
+        <MainPage handleLogIn={handleLogIn} />
+      </div>
+    );
   }
-  handleLogIn = () => {
-    this.setState({ isLoggedIn: true });
-  }
-  render() {
-    const  { isLoggedIn } = this.state;
-    if (!isLoggedIn) {
-      return (
-        <div className="App">
-          <MainPage handleLogIn = {this.handleLogIn} />
-        </div>
-      );
-    }
-    return (<div className="App">
+  return (
+    <div className="App">
       <GamePageContainer />
-    </div>);
-  }
+    </div>
+  );
 }
 
 export default App;
