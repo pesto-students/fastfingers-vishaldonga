@@ -82,7 +82,7 @@ p:before {
 p:after {
   margin-left: 10px;
 }
-.startgame {
+.start-game {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@ p:after {
 .play {
   content: url(./../../images/icon-play.svg);
 }
-.playbutton {
+.play-button {
   background: transparent;
   border: none;
   outline: none;
@@ -116,7 +116,7 @@ p:after {
     padding: 1rem 1rem;
     font-size: 31px;
   }
-  .playbutton {
+  .play-button {
     font-size: 49px;
   }
 }

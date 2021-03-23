@@ -36,8 +36,8 @@ export default function Score({ isGameOver }) {
       </div>
       <div className="flex">
         <div className="info">
-          <span count={currentCount}>
-            SCORE : <span id="spnTotalScore">{convertTimeToMMSS(currentCount)}</span>
+          <span>
+            SCORE : <span id="spnTotalScore" count={currentCount}>{convertTimeToMMSS(currentCount)}</span>
           </span>
         </div>
       </div>

@@ -9,7 +9,7 @@ export default function DisplayCurrentScore({ handlePlayAgainClick }) {
   allGameResults = JSON.parse(allGameResults);
   const count = document.getElementById("spnTotalScore").getAttribute("count");
   const currentScore = count ? count : 0;
-  const isHighScore = allGameResults.find((e) => e <= currentScore);
+  const isHighScore = allGameResults.every((e) => (e <= currentScore));
 
   return (
     <div className="final-score-container">

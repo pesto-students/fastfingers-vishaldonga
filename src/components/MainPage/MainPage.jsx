@@ -6,12 +6,19 @@ export default class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      name: localStorage.Name ? localStorage.Name : "",
       difficultyLevel: "easy",
     };
   }
   handleNameChange = (e) => {
     const { target: { value } = {} } = e;
+    if (value === "") {
+      document.getElementById("validName").classList.remove("hidden");
+      document.getElementById("validName").classList.add("visible");
+    } else {
+      document.getElementById("validName").classList.remove("visible");
+      document.getElementById("validName").classList.add("hidden");
+    }
     this.setState({ name: value });
   };
   handleDifficultyLevelChange = (e) => {
@@ -30,6 +37,7 @@ export default class MainPage extends Component {
     sessionStorage.clear();
     sessionStorage.setItem("name", name);
     sessionStorage.setItem("difficultyLevel", difficultyLevel);
+    localStorage.Name = name;
     handleLogIn();
   };
   render() {
@@ -51,6 +59,8 @@ export default class MainPage extends Component {
             name="name"
             id="username"
             placeholder="TYPE YOUR NAME"
+            autoComplete="off"
+            value={this.state.name}
             onChange={this.handleNameChange}
           />
           <label id="validName" className="align-left w-33 hidden">
@@ -68,11 +78,11 @@ export default class MainPage extends Component {
             <option value="hard">HARD</option>
           </select>
           <div
-            className="startgame pointer"
+            className="start-game pointer"
             onClick={() => this.handleSubmit(handleLogIn)}
           >
             <div className="play"></div>
-            <button className="playbutton">START GAME</button>
+            <button className="play-button">START GAME</button>
           </div>
         </div>
       </div>
