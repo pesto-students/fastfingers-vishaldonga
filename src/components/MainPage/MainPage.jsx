@@ -7,7 +7,7 @@ export default class MainPage extends Component {
     super(props);
     this.state = {
       name: localStorage.Name ? localStorage.Name : "",
-      difficultyLevel: "easy",
+      difficultyLevel: "EASY",
     };
   }
   handleNameChange = (e) => {
@@ -19,7 +19,7 @@ export default class MainPage extends Component {
       document.getElementById("validName").classList.remove("visible");
       document.getElementById("validName").classList.add("hidden");
     }
-    this.setState({ name: value });
+    this.setState({ name: value.toUpperCase() });
   };
   handleDifficultyLevelChange = (e) => {
     const { target: { value } = {} } = e;
@@ -36,7 +36,7 @@ export default class MainPage extends Component {
     const { name, difficultyLevel } = this.state;
     sessionStorage.clear();
     sessionStorage.setItem("name", name);
-    sessionStorage.setItem("difficultyLevel", difficultyLevel);
+    sessionStorage.setItem("level", difficultyLevel);
     localStorage.Name = name;
     handleLogIn();
   };
@@ -63,7 +63,7 @@ export default class MainPage extends Component {
             value={this.state.name}
             onChange={this.handleNameChange}
           />
-          <label id="validName" className="align-left w-33 hidden">
+          <label id="validName" className="align-left ml-1 hidden">
             *Please enter your name to start game.
           </label>
           <select
@@ -71,11 +71,11 @@ export default class MainPage extends Component {
             id="difficulty"
             onChange={this.handleDifficultyLevelChange}
           >
-            <option value="easy" defaultValue>
+            <option value="EASY" defaultValue>
               EASY
             </option>
-            <option value="medium">MEDIUM</option>
-            <option value="hard">HARD</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="HARD">HARD</option>
           </select>
           <div
             className="start-game pointer"

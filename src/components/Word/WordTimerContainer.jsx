@@ -5,10 +5,10 @@ import WordPlay from "./WordPlay";
 import { dictionary } from "../../dictionary";
 import "./WordTimeContainer.css";
 
-const difficultyLevelMap = new Map([
-  ["easy", 1],
-  ["medium", 1.5],
-  ["hard", 2],
+const levelMap = new Map([
+  ["EASY", 1],
+  ["MEDIUM", 1.5],
+  ["HARD", 2],
 ]);
 
 export default function WordTimerContainer({
@@ -19,8 +19,8 @@ export default function WordTimerContainer({
   const [time, setTime] = useState(0);
   const [errorMessage] = useState("");
 
-  const initialDifficultyFactor = difficultyLevelMap.get(
-    sessionStorage.getItem("difficultyLevel")
+  const initialDifficultyFactor = levelMap.get(
+    sessionStorage.getItem("level")
   );
   const [difficultyFactor, setDifficultyFactor] = useState(
     initialDifficultyFactor
@@ -35,23 +35,23 @@ export default function WordTimerContainer({
     return word.length > 8;
   };
 
-  const checkWordCorrect = () => {
-    const filteredResponse = dictionary.filter(wordLength);
-    const randomNumber = Math.floor(Math.random() * filteredResponse.length);
-    setWord(filteredResponse[randomNumber].toUpperCase());
-    const wordTime = filteredResponse[randomNumber].length / difficultyFactor;
+  const getWord = () => {
+    const word = dictionary.filter(wordLength);
+    const randomNumber = Math.floor(Math.random() * word.length);
+    setWord(word[randomNumber].toUpperCase());
+    const wordTime = word[randomNumber].length / difficultyFactor;
     setTime(wordTime > 2 ? wordTime : 2);
     setDifficultyFactor(difficultyFactor + 0.01);
     if (difficultyFactor >= 1.5 && difficultyFactor < 1.51) {
-      sessionStorage.setItem("difficultyLevel", "medium");
+      sessionStorage.setItem("level", "MEDIUM");
       changeGameLevel();
     } else if (difficultyFactor >= 2 && difficultyFactor < 2.01) {
-      sessionStorage.setItem("difficultyLevel", "hard");
+      sessionStorage.setItem("level", "HARD");
       changeGameLevel();
     }
   };
 
-  useEffect(checkWordCorrect, [errorMessage]);
+  useEffect(getWord, [errorMessage]);
 
   if (errorMessage) {
     return <h3>{errorMessage}</h3>;
@@ -59,7 +59,7 @@ export default function WordTimerContainer({
   return (
     <div className="flex-col flex-one">
       <Timer time={time} handleGameOver={handleGameOver} />
-      <WordPlay word={word} checkWordCorrect={checkWordCorrect} />
+      <WordPlay word={word} getWord={getWord} />
     </div>
   );
 }
