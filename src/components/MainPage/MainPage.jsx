@@ -1,16 +1,12 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { ReactComponent as Keyboard } from "./../../images/icon-keyboard.svg";
+import PropTypes from "prop-types";
 import "./MainPage.css";
 
-export default class MainPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: localStorage.Name ? localStorage.Name : "",
-      difficultyLevel: "EASY",
-    };
-  }
-  handleNameChange = (e) => {
+export default function MainPage({ handleLogIn }) {
+  const [name, setName] = useState(localStorage.Name ? localStorage.Name : "");
+  const [difficultyLevel, setDifficultyLevel] = useState("EASY");
+  const handleNameChange = (e) => {
     const { target: { value } = {} } = e;
     if (value === "") {
       document.getElementById("validName").classList.remove("hidden");
@@ -19,13 +15,13 @@ export default class MainPage extends Component {
       document.getElementById("validName").classList.remove("visible");
       document.getElementById("validName").classList.add("hidden");
     }
-    this.setState({ name: value.toUpperCase() });
+    setName(value.toUpperCase());
   };
-  handleDifficultyLevelChange = (e) => {
+  const handleDifficultyLevelChange = (e) => {
     const { target: { value } = {} } = e;
-    this.setState({ difficultyLevel: value });
+    setDifficultyLevel(value);
   };
-  handleSubmit = (handleLogIn) => {
+  const handleSubmit = (handleLogIn) => {
     const username = document.getElementById("username");
     if (username.value === "") {
       username.focus();
@@ -33,59 +29,63 @@ export default class MainPage extends Component {
       document.getElementById("validName").classList.add("visible");
       return;
     }
-    const { name, difficultyLevel } = this.state;
     sessionStorage.clear();
     sessionStorage.setItem("name", name);
     sessionStorage.setItem("level", difficultyLevel);
     localStorage.Name = name;
     handleLogIn();
   };
-  render() {
-    const { handleLogIn } = this.props;
-    return (
-      <div className="MainPage">
-        <div>
-          <Keyboard className="keyboard" />
-        </div>
-        <div>
-          <h1>fast fingers</h1>
-        </div>
-        <div>
-          <p>the ultimate typing game</p>
-        </div>
-        <div className="form-div">
-          <input
-            type="text"
-            name="name"
-            id="username"
-            placeholder="TYPE YOUR NAME"
-            autoComplete="off"
-            value={this.state.name}
-            onChange={this.handleNameChange}
-          />
-          <label id="validName" className="align-left ml-1 hidden">
-            *Please enter your name to start game.
-          </label>
-          <select
-            name="difficulty"
-            id="difficulty"
-            onChange={this.handleDifficultyLevelChange}
-          >
-            <option value="EASY" defaultValue>
-              EASY
-            </option>
-            <option value="MEDIUM">MEDIUM</option>
-            <option value="HARD">HARD</option>
-          </select>
-          <div
-            className="start-game pointer"
-            onClick={() => this.handleSubmit(handleLogIn)}
-          >
-            <div className="play"></div>
-            <button className="play-button">START GAME</button>
-          </div>
+  return (
+    <div className="MainPage">
+      <div>
+        <Keyboard className="keyboard" />
+      </div>
+      <div>
+        <h1>fast fingers</h1>
+      </div>
+      <div>
+        <p>the ultimate typing game</p>
+      </div>
+      <div className="form-div">
+        <input
+          type="text"
+          name="name"
+          id="username"
+          placeholder="TYPE YOUR NAME"
+          autoComplete="off"
+          value={name}
+          onChange={handleNameChange}
+        />
+        <label id="validName" className="align-left ml-1 hidden">
+          *Please enter your name to start game.
+        </label>
+        <select
+          name="difficulty"
+          id="difficulty"
+          onChange={handleDifficultyLevelChange}
+        >
+          <option value="EASY" defaultValue>
+            EASY
+          </option>
+          <option value="MEDIUM">MEDIUM</option>
+          <option value="HARD">HARD</option>
+        </select>
+        <div
+          className="start-game pointer"
+          onClick={() => handleSubmit(handleLogIn)}
+        >
+          <div className="play"></div>
+          <button className="play-button">START GAME</button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+MainPage.propTypes = {
+  handleLogIn: PropTypes.func,
+};
+
+MainPage.defaultProps = {
+  handleLogIn: () => {},
+};
