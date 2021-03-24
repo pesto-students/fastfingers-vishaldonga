@@ -7,15 +7,15 @@ export default function WordPlay({ word, getWord }) {
 
   const handleWordInput = (e) => {
     const { target: { value } = {} } = e;
+    const element = document.getElementById("wordText");
+    
     if (word.substring(0, value.length).match(value.toUpperCase())) {
-      const element = document.getElementById("wordText");
       element.innerHTML = `<span class="green">${word.substring(
         0,
         value.length
       )}</span>${word.substring(value.length)}`;
       setMatchedWordIndex(value.length);
     } else {
-      const element = document.getElementById("wordText");
       element.innerHTML = `<span class="green">${word.substring(
         0,
         matchedWordIndex
@@ -26,7 +26,8 @@ export default function WordPlay({ word, getWord }) {
     }
     if (word === value.toUpperCase()) {
       getWord();
-      e.target.value = "";
+      e.target.value = "";      
+      setMatchedWordIndex(-1);
     }
   };
 

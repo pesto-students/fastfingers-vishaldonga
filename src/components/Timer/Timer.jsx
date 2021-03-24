@@ -5,17 +5,16 @@ import CircularProgressBar from "./../CircularProgressBar/CircularProgressBar";
 import "./Timer.css";
 
 export default function Timer({ time, handleGameOver }) {
-  const convertedTime = time * 100;
-  let [currentCount, setCount] = useState(convertedTime);
-  let timer = () => setCount(currentCount - 1);
+  let [currentCount, setCount] = useState(0);
+  let timer = () => setCount((currentCount) => currentCount - 1);
   const [initialStateChanged, setInitialStateChanged] = useState(false);
 
   useEffect(() => {
-    if (convertedTime > 0) {
+    if (time > 0) {
       setInitialStateChanged(true);
     }
-    setCount(convertedTime);
-  }, [convertedTime]);
+    setCount(time*100);
+  }, [time]);
 
   useEffect(() => {
     if (currentCount <= 0) {

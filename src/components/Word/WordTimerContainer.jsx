@@ -17,6 +17,7 @@ export default function WordTimerContainer({
 }) {
   const [word, setWord] = useState("");
   const [time, setTime] = useState(0);
+  const [fetchFirstWord] = useState(true);
 
   const initialDifficultyFactor = levelMap.get(sessionStorage.getItem("level"));
   const [difficultyFactor, setDifficultyFactor] = useState(
@@ -35,10 +36,12 @@ export default function WordTimerContainer({
   const getWord = () => {
     const word = dictionary.filter(wordLength);
     const randomNumber = Math.floor(Math.random() * word.length);
-    setWord(word[randomNumber].toUpperCase());
     const wordTime = word[randomNumber].length / difficultyFactor;
+
+    setWord(word[randomNumber].toUpperCase());
     setTime(wordTime > 2 ? wordTime : 2);
     setDifficultyFactor(difficultyFactor + 0.01);
+    
     if (difficultyFactor >= 1.5 && difficultyFactor < 1.51) {
       sessionStorage.setItem("level", "MEDIUM");
       changeGameLevel();
@@ -48,7 +51,7 @@ export default function WordTimerContainer({
     }
   };
 
-  useEffect(getWord);
+  useEffect(getWord, [fetchFirstWord]);
   return (
     <div className="flex-col flex-one">
       <Timer time={time} handleGameOver={handleGameOver} />
