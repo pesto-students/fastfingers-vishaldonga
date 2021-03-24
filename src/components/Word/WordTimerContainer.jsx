@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Timer from "./../Timer/Timer";
 import WordPlay from "./WordPlay";
-import { dictionary } from "../../dictionary";
+import dictionary from "../../data/dictionary.json";
 import "./WordTimeContainer.css";
 
 const levelMap = new Map([
@@ -17,11 +17,8 @@ export default function WordTimerContainer({
 }) {
   const [word, setWord] = useState("");
   const [time, setTime] = useState(0);
-  const [errorMessage] = useState("");
 
-  const initialDifficultyFactor = levelMap.get(
-    sessionStorage.getItem("level")
-  );
+  const initialDifficultyFactor = levelMap.get(sessionStorage.getItem("level"));
   const [difficultyFactor, setDifficultyFactor] = useState(
     initialDifficultyFactor
   );
@@ -51,11 +48,7 @@ export default function WordTimerContainer({
     }
   };
 
-  useEffect(getWord, [errorMessage]);
-
-  if (errorMessage) {
-    return <h3>{errorMessage}</h3>;
-  }
+  useEffect(getWord);
   return (
     <div className="flex-col flex-one">
       <Timer time={time} handleGameOver={handleGameOver} />
