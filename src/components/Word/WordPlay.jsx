@@ -8,7 +8,7 @@ export default function WordPlay({ word, getWord }) {
   const handleWordInput = (e) => {
     const { target: { value } = {} } = e;
     const element = document.getElementById("wordText");
-    
+
     if (word.substring(0, value.length).match(value.toUpperCase())) {
       element.innerHTML = `<span class="green">${word.substring(
         0,
@@ -38,10 +38,10 @@ export default function WordPlay({ word, getWord }) {
       </h1>
       <input
         type="text"
-        id="wordInput"
         className="align-center"
         onChange={handleWordInput}
         autoComplete="off"
+        autoFocus
       />
     </div>
   );
