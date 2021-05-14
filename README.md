@@ -50,9 +50,6 @@ Difficulty factor for hard level: 2
 13. Show best score for player
 14. Application UI should closely match with the provided UI design mocks.
 
-**Note: Please deploy your application to Netlify(no other platforms allowed at this point) and Add your Application link to website section in About field**
-![](public/about.png)
-
 ## Additional Requirement
 
 - Write Test cases for your components.
