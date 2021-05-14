@@ -1,38 +1,79 @@
+:root {
+  --red: #ff5155;
+  --white: #ffffff;
+  --bodycolor: #032228;
+  --green: #54ba18;
+  --darkviolet: #445298;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Black Ops One', cursive;
+}
 .App {
+  height: 100vh;
+  text-align: center;
+  background-image: linear-gradient(
+      to bottom,
+      rgb(0, 26, 36),
+      rgba(0, 0, 0, 0.9)
+    ),
+    url(images/mainbackground.svg);
+  background-size: 100%;
+  padding: 3vh;
+  color: var(--red);
+}
+.align-left {
+  text-align: left;
+}
+.align-center {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.m-1 {
+  margin: 1rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.flex {
+  display: flex;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex-col {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.flex-one {
+  flex: 1;
+}
+.info {
+  font-size: 29px;
+  color: var(--red);
+  margin: 0.4rem;
+}
+.reload {
+  content: url(./images/icon-reload.svg);
+}
+.inline-flex {
+  display: inline-flex;
+}
+.visible {
+  visibility: visible;
+}
+.hidden {
+  visibility: hidden;
+}
+.pointer {
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media all and (min-width: 1500px) and (min-height: 800px) {
+  .info {
+    font-size: 49px;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media all and (min-width: 400px) and (max-width: 800px) {
+  .App {
+    height: auto;
   }
 }

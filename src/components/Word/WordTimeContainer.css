@@ -1,0 +1,13 @@
+.word-play input {
+  width: auto;
+  text-transform: uppercase;
+}
+.green {
+  color: var(--green);
+}
+.darkviolet {
+  color: var(--darkviolet);
+}
+.white-color {
+  color: var(--white);
+}

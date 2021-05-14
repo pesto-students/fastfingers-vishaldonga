@@ -1,0 +1,34 @@
+.crossicon {
+  content: url(./../../images/icon-cross.svg);
+}
+.crossdiv {
+  padding: 1.5rem 8px;
+}
+.quit-game {
+  position: absolute;
+  bottom: 5px;
+}
+.word-timer-container {
+  flex: none;
+  width: 65%;
+}
+
+@media all and (min-width: 1500px) and (min-height: 800px) {
+  .crossdiv {
+    padding: 1.5rem 16px;
+  }
+}
+
+@media all and (min-width: 400px) and (max-width: 800px) {
+  .quit-game {
+    position: relative;
+    justify-content: center;
+    width: 100%;
+  }
+  .column-reverse {
+    flex-direction: column-reverse;
+  }
+  .word-timer-container {
+    width: 100%;
+  }
+}

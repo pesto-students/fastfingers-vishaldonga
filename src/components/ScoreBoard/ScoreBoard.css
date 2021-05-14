@@ -1,0 +1,55 @@
+.scoreboard {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid var(--red);
+  border-radius: 15px;
+  text-align: center;
+  width: 23%;
+  height: 62vh;
+  padding: 0 1rem;
+  margin-left: 1rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+.scoreboard h2 {
+  color: var(--red);
+  font-weight: normal;
+  padding: 0.7rem 0 1.5rem;
+}
+.scoreboard div {
+  color: var(--white);
+  text-align: left;
+  padding: 0.3rem 0.5rem;
+}
+.show {
+  margin-left: 0.5rem;
+  color: var(--red);
+  display: block;
+}
+.hide {
+  display: none;
+}
+.game-score {
+  font-size: 1.5rem;
+}
+
+@media all and (min-width: 1500px) and (min-height: 800px) {
+  .scoreboard {
+    width: 20%;
+  }
+  .scoreboard h2 {
+    font-size: 40px;
+  }
+  .game-score {
+    font-size: 2.5rem;
+  }
+}
+
+@media all and (min-width: 400px) and (max-width: 800px) {
+  .scoreboard {
+    width: 95%;
+  }
+}
